@@ -1,0 +1,43 @@
+---
+title: "Exemplo"
+author: Treinamento R Markdown
+output: slidy_presentation
+---
+
+#Apresentação de Dados
+
+## Primeira Fase
+
+- Cabeçalho tabela
+
+```{r}
+library(knitr)
+head(mtcars)
+```
+
+## Segunda Fase
+
+- Cabeçalho tabela 2
+```{r}
+iris2 <- head(iris)
+iris2
+```
+
+
+# Apresentação de Dados 
+
+## Terceira Fase
+
+- Tópico 5
+- Tópico 6
+
+---
+
+```{r, echo=FALSE}
+pie(rep(1, 24), col = rainbow(24), radius = 0.9)
+```
+
+## Quarta Fase
+
+- Tópico 7
+- Tópico 8
