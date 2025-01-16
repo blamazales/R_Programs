@@ -1,0 +1,180 @@
+---
+title: "Review Dashboard"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+---
+
+```{r include = FALSE}
+library(viridis)
+library(ggplot2)
+library(marmap)
+```
+
+# Intro {.sidebar}
+
+This dashboard covers several topics:
+
+* The marmap package
+* The viridis package
+* Miscellaneous material
+
+GRÁFICO EM DIVERSOS FORMATOS:
+
+* Gráfico Plot 
+* Gráfico Plot e COS
+* Gráfico Imagem
+
+
+# Marmap Package
+
+## Column 1
+
+### Florida
+
+```{r echo = FALSE}
+data(florida)
+plot(florida, image = TRUE, lwd = 0.5, main = "Florida Bathymetry")
+```
+
+The [marmap](https://cran.r-project.org/web/packages/marmap/index.html) package provides tools and data for visualizing the ocean floor. Here is an example contour plot of marmap's `florida` dataset.
+
+## Column 2
+
+### Hawaii
+
+```{r echo = FALSE}
+data(hawaii)
+plot(hawaii, image = TRUE, lwd = 0.5, main = "Hawaii Bathymetry")
+```
+
+### Alaska
+
+```{r echo = FALSE}
+data(aleutians)
+plot(aleutians, image = TRUE, lwd = 0.5, main = "Aleutians Bathymetry")
+```
+
+
+# Viridis Package
+
+## Column 1
+
+### Viridis colors
+
+```{r fig.cap="Maunga Whao, Auckland, NZ"}
+image(volcano, col = viridis(200))
+```
+
+### Magma colors
+
+```{r fig.cap="Maunga Whao, Auckland, NZ"}
+image(volcano, col = viridis(200, option = "A"))
+```
+
+## Column 2
+
+### Inferno colors
+
+```{r fig.cap="Maunga Whao, Auckland, NZ"}
+image(volcano, col = viridis(200, option = "B"))
+```
+
+### Plasma colors
+
+```{r fig.cap="Maunga Whao, Auckland, NZ"}
+image(volcano, col = viridis(200, option = "C"))
+```
+
+# Miscellaneous
+
+## Column 1 {data-width=300}
+
+### Bash support
+
+```{r}
+x <- rnorm(200)
+hist(x)
+```
+
+***
+
+This chunk executes bash code.
+
+### Python support
+
+```{r}
+riqueza <- c(15,18,22,24,25,30,31,34,37,39,41,45)
+area.cate <- rep(c("pequeno", "grande"), each=6)
+boxplot(riqueza~area.cate)
+```
+
+***
+
+This chunk executes python code.
+
+## Column 2 {data-width=700}
+
+### Tables with Kable 
+
+```{r echo = FALSE, results = 'asis'}
+library(knitr)
+kable(mtcars[1:5, ], caption = "A knitr kable.")
+```
+
+***
+
+It is very easy to make tables with knitr's `kable` function.
+
+
+
+
+-------------------------------------
+# Gráfico Plot
+
+## Column 1
+    
+###  PLOT 1
+    
+```{r}
+
+x=rnorm(100)
+y=rnorm(100)
+plot(x,y)
+
+```
+   
+# Gráfico Plot e COS
+
+## Column 2
+    
+### Grafico 2
+    
+```{r}
+plot(x,y,xlab="this is the x-axis",ylab="this is the y-axis",main="Plot of X vs Y")
+```
+    
+### Grafico 3
+
+```{r}
+x=seq(-pi,pi,length=50)
+y=x
+f=outer(x,y,function(x,y)cos(y)/(1+x^2))
+contour(x,y,f)
+```
+
+# Gráfico Imagem
+
+## Column 3
+    
+### Grafico 4
+```{r}
+x=seq(-pi,pi,length=50)
+y=x
+f=outer(x,y,function(x,y)cos(y)/(1+x^2))
+contour(x,y,f)
+contour(x,y,f,nlevels=45,add=T)
+fa=(f-t(f))/2
+contour(x,y,fa,nlevels=15)
+image(x,y,fa)
+```
