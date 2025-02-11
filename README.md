@@ -32,7 +32,7 @@ readr - Importação de arquivos CSV e outros formatos
 
 Clone este repositório:
 
-git clone https://github.com/seu-usuario/seu-repositorio.git
+git clone https://github.com/blamazales/R_Programs/
 
 Abra o RStudio ou qualquer outro ambiente de desenvolvimento compatível.
 
